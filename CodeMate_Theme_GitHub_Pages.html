@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeMate — Learn. Code. Build.</title>
+<style>
+:root{
+  --bg:#030b17;
+  --panel:#071426;
+  --panel2:#0a1930;
+  --border:#17395f;
+  --text:#f4f7ff;
+  --muted:#93a4bd;
+  --yellow:#ffd62e;
+  --cyan:#18d9ff;
+  --purple:#8b4dff;
+  --green:#28df6d;
+  --pink:#ff36d1;
+  --blue:#3d8bff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  color:var(--text);
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 50% -10%,#12325b 0,transparent 35%),
+    radial-gradient(circle at 90% 50%,#071f36 0,transparent 30%),
+    var(--bg);
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  padding:3px;
+  background:linear-gradient(90deg,#ff146e,#6b27ff,#00cfff,#00df9a,#f7e800,#ff146e);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.container{width:min(1250px,calc(100% - 32px));margin:auto}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:50;
+  height:72px;
+  display:flex;align-items:center;gap:28px;
+  background:rgba(3,11,23,.9);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #143254;
+}
+.logo{
+  color:white;text-decoration:none;font-size:24px;font-weight:900;
+  white-space:nowrap
+}
+.logo .tag{color:var(--yellow)}
+.logo .mark{color:#10d7ff}
+.navlinks{display:flex;gap:28px;flex:1;justify-content:center}
+.navlinks a{
+  color:#aebbd0;text-decoration:none;font-size:14px;font-weight:700;
+  padding:25px 2px;position:relative
+}
+.navlinks a:hover,.navlinks a.active{color:white}
+.navlinks a.active:after{
+  content:"";position:absolute;left:0;right:0;bottom:10px;height:3px;
+  background:var(--yellow);border-radius:5px
+}
+.search{
+  width:205px;padding:10px 15px;border-radius:22px;
+  border:1px solid #23466d;background:#061225;color:white;outline:none
+}
+.search:focus{border-color:#42b9ff}
+.btn{
+  border:1px solid var(--yellow);border-radius:22px;
+  padding:10px 18px;background:transparent;color:var(--yellow);
+  font-weight:800
+}
+.btn.primary{
+  background:linear-gradient(135deg,#ffe34a,#ffbf00);
+  color:#101722;border:0
+}
+
+/* HERO */
+.hero{
+  margin-top:16px;
+  min-height:330px;padding:42px 38px;
+  border:1px solid #1c426b;border-radius:22px;
+  background:
+    radial-gradient(circle at 78% 50%,#14345a 0,transparent 30%),
+    linear-gradient(135deg,#08172a,#061120);
+  display:grid;grid-template-columns:1.1fr .9fr;align-items:center;
+  overflow:hidden;position:relative
+}
+.hero:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,#13bfff08,transparent)
+}
+.badge{
+  display:inline-flex;gap:7px;align-items:center;
+  padding:8px 13px;border:1px solid #35557a;border-radius:18px;
+  background:#0b1a2f;color:#d8e2f2;font-size:12px;font-weight:800;
+  margin-bottom:15px
+}
+.hero h1{font-size:48px;line-height:1.02;letter-spacing:-2px;margin-bottom:16px}
+.gradient-text{
+  background:linear-gradient(90deg,#6f8cff,#12d7e8,#b9ed2c,#ffe32b);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p{max-width:590px;color:#9fb0c7;line-height:1.65;font-size:16px;margin-bottom:24px}
+.cta{
+  border:0;border-radius:24px;padding:13px 22px;
+  background:linear-gradient(135deg,#ffe23b,#ffbf00);
+  color:#101722;font-weight:900
+}
+
+/* CSS LAPTOP ILLUSTRATION */
+.hero-art{display:flex;justify-content:center;align-items:center;min-height:240px}
+.laptop{
+  width:340px;height:190px;border:4px solid #526b9d;border-radius:14px;
+  background:#020914;box-shadow:0 0 35px #3f68ff44;position:relative;
+  transform:perspective(600px) rotateY(-8deg)
+}
+.laptop:before{
+  content:"";position:absolute;left:-25px;right:-25px;bottom:-25px;height:20px;
+  background:linear-gradient(#405c91,#172640);border-radius:0 0 35px 35px
+}
+.screenbar{height:28px;border-bottom:1px solid #243b62;display:flex;align-items:center;padding:0 10px;gap:5px}
+.dot{width:6px;height:6px;border-radius:50%;background:#3a80ff}
+.code-lines{padding:17px 20px}
+.code-line{height:7px;border-radius:5px;background:#6d42ff;margin:10px 0}
+.code-line:nth-child(2){width:72%;background:#20d8e9}
+.code-line:nth-child(3){width:88%;background:#ffe02d}
+.code-line:nth-child(4){width:55%;background:#8bf03b}
+.code-line:nth-child(5){width:78%;background:#9b65ff}
+
+/* SECTIONS */
+section{padding:16px 0}
+.section-card{
+  border:1px solid #17395f;border-radius:20px;
+  background:linear-gradient(145deg,#08172a,#061120);
+  padding:20px;margin-bottom:16px
+}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.section-title{font-size:20px;font-weight:900}
+.section-sub{font-size:12px;color:var(--muted);margin-top:4px}
+.view-btn{
+  border:1px solid #24476e;border-radius:20px;background:#07172b;
+  color:#c5d4e9;padding:9px 16px
+}
+
+/* LANGUAGE CARDS */
+.lang-grid{
+  display:grid;grid-template-columns:repeat(8,1fr);gap:12px
+}
+.lang-card{
+  min-height:125px;padding:14px 9px;text-align:center;
+  border:1px solid #1a3a60;border-radius:14px;
+  background:linear-gradient(145deg,#0b1d35,#071326);
+  transition:.25s;cursor:pointer
+}
+.lang-card:hover{
+  transform:translateY(-5px);border-color:#39aaff;
+  box-shadow:0 12px 35px #0008
+}
+.lang-icon{
+  width:50px;height:50px;margin:0 auto 9px;display:grid;place-items:center;
+  border-radius:13px;background:#081a31;border:1px solid #244b75;
+  font-size:27px;font-weight:900
+}
+.lang-card h3{font-size:14px;margin-bottom:4px}
+.lang-card p{font-size:10px;color:#91a4bd}
+
+/* WORK CARDS */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.work-card{
+  min-height:190px;border-radius:18px;padding:20px;
+  border:1px solid #334e77;background:#08162a;position:relative;overflow:hidden
+}
+.work-card.notes-card{border-color:#7b36d9}
+.work-card.solver-card{border-color:#21a968}
+.work-card:after{
+  content:"";position:absolute;width:160px;height:160px;border-radius:50%;
+  right:-50px;top:-50px;background:#734cff18;filter:blur(2px)
+}
+.work-top{display:flex;gap:13px;align-items:flex-start}
+.work-icon{
+  width:40px;height:40px;display:grid;place-items:center;border-radius:10px;
+  font-size:22px;background:#8b45ff;color:white
+}
+.solver-card .work-icon{background:#16d879;color:#032014}
+.work-card h2{font-size:18px}
+.work-card .desc{font-size:12px;color:#91a4bd;margin-top:4px}
+.features{margin:13px 0;display:grid;gap:5px}
+.features div{font-size:12px;color:#c5d0df}
+.notes-card .features div:before{content:"✓";color:#b873ff;margin-right:8px}
+.solver-card .features div:before{content:"✓";color:#29e57a;margin-right:8px}
+.work-btn{
+  border:0;border-radius:20px;padding:10px 17px;font-weight:900
+}
+.notes-card .work-btn{background:#893cff;color:white}
+.solver-card .work-btn{background:#2bdc69;color:#03150a}
+
+/* COURSE */
+#course{display:none}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}
+.topic{
+  padding:8px 12px;border-radius:8px;border:1px solid #31567e;
+  background:#071529;color:#bcd0e8
+}
+.topic:hover{border-color:#ffd62e;color:#ffd62e}
+.codebox{
+  background:#020812;border:1px solid #23466b;border-radius:12px;
+  padding:17px;overflow:auto
+}
+pre{color:#d7e4f5;font:14px/1.55 "Courier New",monospace;white-space:pre-wrap}
+
+/* NOTES / SOLVER */
+.workspace{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel h2{font-size:19px;margin-bottom:5px}
+.panel>p{color:var(--muted);font-size:12px;margin-bottom:14px}
+input,textarea,select{
+  width:100%;background:#061225;color:white;border:1px solid #274767;
+  border-radius:9px;padding:11px;outline:none
+}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus,select:focus{border-color:#41b8ff}
+.row{display:flex;gap:8px;margin-top:10px}
+.gold{
+  border:0;border-radius:9px;padding:10px 15px;
+  background:linear-gradient(135deg,#ffe13a,#ffbd00);font-weight:900
+}
+.outline{
+  border:1px solid #3b638d;border-radius:9px;padding:10px 15px;
+  background:#071529;color:#dce8f6
+}
+.notes-list{display:grid;gap:8px;margin-top:14px}
+.note{
+  padding:10px;border:1px solid #254563;border-radius:9px;background:#061225
+}
+.note small{display:block;color:#7f93ac;margin-top:4px}
+.tip-list{display:grid;gap:9px}
+.tip{padding:13px;border-left:3px solid #ffd62e;background:#08182b;border-radius:7px;color:#b9c8da;font-size:13px}
+
+/* MODAL */
+.modal{
+  display:none;position:fixed;inset:0;background:#000b;z-index:100;
+  align-items:center;justify-content:center;padding:20px
+}
+.box{
+  width:min(420px,100%);background:#08162a;border:1px solid #2d70a6;
+  border-radius:18px;padding:24px;box-shadow:0 25px 80px #000
+}
+.close{float:right;background:none;border:0;color:white;font-size:26px}
+.form{display:grid;gap:10px;margin-top:18px}
+.tabs{display:flex;gap:8px;margin:15px 0}
+.tabs button{flex:1;padding:10px;background:#071326;color:#b9c9dd;border:1px solid #31506f;border-radius:8px}
+.tabs .active{border-color:#ffd62e;color:#ffd62e}
+
+/* FOOTER */
+footer{
+  padding:25px;text-align:center;color:#70829a;font-size:12px;
+  border-top:1px solid #143254;margin-top:4px
+}
+footer b{color:#dce7f4}
+
+.reveal{opacity:0;transform:translateY(22px);transition:.65s ease}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:1050px){
+  .lang-grid{grid-template-columns:repeat(4,1fr)}
+  .search{width:160px}
+}
+@media(max-width:760px){
+  .nav{height:auto;padding:12px 16px;flex-wrap:wrap}
+  .navlinks{order:3;width:100%;overflow:auto;justify-content:flex-start;gap:22px}
+  .navlinks a{padding:8px 0}
+  .navlinks a.active:after{bottom:0}
+  .search{margin-left:auto;width:145px}
+  .hero{grid-template-columns:1fr;text-align:center;padding:30px 20px}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero h1{font-size:39px}
+  .hero-art{min-height:190px}
+  .laptop{transform:scale(.82)}
+  .work-grid,.workspace{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .container{width:min(100% - 20px,1250px)}
+  .lang-grid{grid-template-columns:repeat(2,1fr)}
+  .section-head{align-items:flex-start;gap:10px}
+  .section-title{font-size:17px}
+  .view-btn{display:none}
+  .logo{font-size:20px}
+  .search{width:125px}
+  .nav .btn{padding:8px 12px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+
+<body>
+<nav class="nav">
+  <div class="container" style="display:flex;align-items:center;gap:20px;width:100%">
+    <a class="logo" href="#home"><span class="mark">&lt;/&gt;</span> Code<span class="tag">Mate</span></a>
+    <div class="navlinks">
+      <a class="active" href="#home">Home</a>
+      <a href="#languages">Learn</a>
+      <a href="#practice">Practice</a>
+      <a href="#notes">Notes</a>
+      <a href="#tips">About</a>
+    </div>
+    <input class="search" id="search" placeholder="⌕  Search..." oninput="findLang()">
+    <button class="btn" onclick="modal('login')">Login</button>
+    <button class="btn primary" onclick="document.querySelector('#languages').scrollIntoView()">Get Started</button>
+  </div>
+</nav>
+
+<main class="container">
+<section id="home">
+  <div class="hero reveal">
+    <div>
+      <div class="badge">⭐ Build Your Future with Code</div>
+      <h1>Code<span class="gradient-text">Mate</span> —<br><span class="gradient-text">Learn. Code. Build.</span></h1>
+      <p>Your all-in-one platform to learn programming, solve problems and build your skills for a better tomorrow.</p>
+      <button class="cta" onclick="document.querySelector('#languages').scrollIntoView({behavior:'smooth'})">🚀 Start Learning</button>
+    </div>
+    <div class="hero-art">
+      <div class="laptop">
+        <div class="screenbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="code-lines">
+          <div class="code-line" style="width:45%"></div>
+          <div class="code-line"></div><div class="code-line"></div>
+          <div class="code-line"></div><div class="code-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="languages">
+  <div class="section-card reveal">
+    <div class="section-head">
+      <div>
+        <div class="section-title">▦ &nbsp;Popular Programming Languages</div>
+        <div class="section-sub">Choose your language and start coding today.</div>
+      </div>
+      <button class="view-btn" onclick="showAllLanguages()">View All →</button>
+    </div>
+    <div class="lang-grid" id="langs"></div>
+  </div>
+</section>
+
+<section id="course">
+  <div class="section-card">
+    <div class="section-head">
+      <div>
+        <div class="section-title" id="courseTitle"></div>
+        <div class="section-sub" id="courseDesc"></div>
+      </div>
+    </div>
+    <div class="topics" id="topics"></div>
+    <div class="codebox"><pre id="courseCode"></pre></div>
+    <br>
+    <button class="outline" onclick="copy('courseCode')">📋 Copy Code</button>
+  </div>
+</section>
+
+<section id="practice">
+  <div class="work-grid">
+    <div class="work-card notes-card reveal" id="notes">
+      <div class="work-top">
+        <div class="work-icon">▤</div>
+        <div><h2>My Notes</h2><div class="desc">Write, save and organize your coding notes.</div></div>
+      </div>
+      <div class="features">
+        <div>Add and manage your notes</div>
+        <div>Keep your ideas organized</div>
+        <div>Access anytime, anywhere</div>
+      </div>
+      <button class="work-btn" onclick="document.getElementById('notePanel').scrollIntoView({behavior:'smooth'})">Open Notes →</button>
+    </div>
+
+    <div class="work-card solver-card reveal">
+      <div class="work-top">
+        <div class="work-icon">&lt;/&gt;</div>
+        <div><h2>Code Solver</h2><div class="desc">Solve your coding problems with ease.</div></div>
+      </div>
+      <div class="features">
+        <div>Get step-by-step suggestions</div>
+        <div>Learn from real examples</div>
+        <div>Improve your problem-solving skills</div>
+      </div>
+      <button class="work-btn" onclick="document.getElementById('solverPanel').scrollIntoView({behavior:'smooth'})">Start Solving →</button>
+    </div>
+  </div>
+</section>
+
+<section id="notePanel">
+  <div class="workspace">
+    <div class="section-card panel reveal">
+      <h2>📝 My Notes</h2><p>Save notes in your browser using local storage.</p>
+      <input id="nt" placeholder="Note title"><br><br>
+      <textarea id="nx" placeholder="Write your coding notes here..."></textarea>
+      <div class="row"><button class="gold" onclick="saveNote()">💾 Save Note</button><button class="outline" onclick="clearNote()">Clear</button></div>
+      <div class="notes-list" id="noteList"></div>
+    </div>
+
+    <div class="section-card panel reveal" id="solverPanel">
+      <h2>🔎 Code Solver</h2><p>Paste code and get basic suggestions.</p>
+      <select id="sl">
+        <option>C</option><option>C++</option><option>Python</option><option>Java</option>
+        <option>HTML</option><option>JavaScript</option>
+      </select><br><br>
+      <textarea id="sc" placeholder="Paste your code here..."></textarea><br><br>
+      <button class="gold" style="width:100%" onclick="solve()">🔍 Analyze Code</button>
+      <div class="codebox" style="margin-top:12px"><pre id="sr">Your suggestions will appear here.</pre></div>
+    </div>
+  </div>
+</section>
+
+<section id="tips">
+  <div class="section-card reveal">
+    <div class="section-head"><div><div class="section-title">💡 Coding Tips</div><div class="section-sub">Simple habits for better coding.</div></div></div>
+    <div class="tip-list">
+      <div class="tip">1. Practice coding every day.</div>
+      <div class="tip">2. Read the error message carefully.</div>
+      <div class="tip">3. Break big problems into small steps.</div>
+      <div class="tip">4. Keep short notes for syntax and concepts.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 <b>CodeMate</b>. Learn. Code. Build. &nbsp;|&nbsp; Made for developers ❤️</footer>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <button class="close" onclick="closeM()">×</button>
+    <h2 id="mt">Login</h2>
+    <div class="tabs">
+      <button id="lt" class="active" onclick="show('login')">Login</button>
+      <button id="rt" onclick="show('register')">Register</button>
+    </div>
+    <form id="lf" class="form" onsubmit="login(event)">
+      <input id="le" type="email" placeholder="Email ID" required>
+      <input id="lp" type="password" placeholder="Password" required>
+      <button class="gold">Login</button>
+    </form>
+    <form id="rf" class="form" style="display:none" onsubmit="register(event)">
+      <input id="ru" placeholder="Username" required>
+      <input id="rp" placeholder="Phone number" required>
+      <input id="re" type="email" placeholder="Email ID" required>
+      <input id="rx" type="password" placeholder="Create password" required>
+      <button class="gold">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<script>
+const data={
+"C":{
+ "Hello World":`#include <stdio.h>
+
+int main(void) {
+    printf("Hello, World!\\n");
+    return 0;
+}`,
+ "For Loop":`#include <stdio.h>
+
+int main(void) {
+    for (int i=1;i<=5;i++) printf("%d ",i);
+    return 0;
+}`,
+ "Variables":`#include <stdio.h>
+int main(){int age=18; float price=9.5f; printf("%d %.1f",age,price); return 0;}`,
+ "If Else":`#include <stdio.h>
+int main(){int n=7;if(n%2==0) puts("Even"); else puts("Odd");}`,
+ "While Loop":`#include <stdio.h>
+int main(){int i=1;while(i<=5){printf("%d ",i++);}return 0;}`,
+ "Function":`#include <stdio.h>
+int add(int a,int b){return a+b;} int main(){printf("%d",add(2,3));}`,
+ "Array":`#include <stdio.h>
+int main(){int a[]={2,4,6,8};for(int i=0;i<4;i++)printf("%d ",a[i]);}`,
+ "Pointer":`#include <stdio.h>
+int main(){int x=10;int *p=&x;printf("%d",*p);}`,
+ "Factorial":`#include <stdio.h>
+int main(){int n=5,f=1;for(int i=1;i<=n;i++)f*=i;printf("%d",f);}`,
+ "Switch":`#include <stdio.h>
+int main(){int n=2;switch(n){case 1:puts("One");break;case 2:puts("Two");break;default:puts("Other");}}`
+},
+"Python":{
+ "Hello World":`print("Hello, World!")`,
+ "For Loop":`for i in range(1,6):
+    print(i)`,
+ "Variables":`name="CodeMate"
+age=18
+print(name,age)`,
+ "Input":`name=input("Name: ")
+print("Hello",name)`,
+ "If Else":`n=7
+print("Even" if n%2==0 else "Odd")`,
+ "List":`nums=[1,2,3,4]
+print(sum(nums))`,
+ "Function":`def add(a,b):
+    return a+b
+print(add(2,3))`,
+ "Dictionary":`student={"name":"Asha","age":20}
+print(student["name"])`,
+ "Class":`class Student:
+    def __init__(self,name): self.name=name
+s=Student("Asha")
+print(s.name)`,
+ "Prime Check":`n=17
+print(n>1 and all(n%i for i in range(2,int(n**.5)+1)))`
+},
+"JavaScript":{
+ "Alert":`alert("Hello, CodeMate!");`,
+ "Variables":`let name="CodeMate"; const version=1; console.log(name,version);`,
+ "Function":`function add(a,b){return a+b;} console.log(add(2,3));`,
+ "Arrow Function":`const square=x=>x*x; console.log(square(5));`,
+ "If Else":`let n=7; console.log(n%2===0?"Even":"Odd");`,
+ "For Loop":`for(let i=1;i<=5;i++) console.log(i);`,
+ "Array":`console.log([1,2,3].map(x=>x*2));`,
+ "Object":`const user={name:"Asha",age:20}; console.log(user.name);`,
+ "Promise":`Promise.resolve("Done").then(console.log);`,
+ "DOM Text":`document.body.innerText="Hello CodeMate";`
+},
+"Java":{
+ "Hello World":`class Main{
+ public static void main(String[] args){
+  System.out.println("Hello, World!");
+ }
+}`,
+ "If Else":`int n=7;
+System.out.println(n%2==0 ? "Even" : "Odd");`,
+ "For Loop":`for(int i=1;i<=5;i++) System.out.println(i);`,
+ "Class":`class Student{
+ String name;
+ Student(String name){this.name=name;}
+}`,
+ "Array":`int[] a={1,2,3,4};`,
+},
+"C++":{"Hello World":`#include <iostream>
+using namespace std;
+int main(){ cout<<"Hello, World!"; return 0;}`,"For Loop":`for(int i=1;i<=5;i++) cout<<i<<" ";`},
+"PHP":{"Hello World":`<?php echo "Hello, World!"; ?>`},
+"Go":{"Hello World":`package main
+import "fmt"
+func main(){fmt.Println("Hello, World!")}`},
+"Ruby":{"Hello World":`puts "Hello, World!"`}
+};
+
+const info={
+ C:"The Classic",Python:"Simple & Powerful",JavaScript:"Web & Beyond",
+ Java:"Build Enterprise Apps","C++":"High Performance",PHP:"Web Development",
+ Go:"Fast & Efficient",Ruby:"Elegant & Productive"
+};
+const icons={Python:"🐍",JavaScript:"JS",Java:"☕","C++":"C++",C:"C",PHP:"php",Go:"GO",Ruby:"◆"};
+const names=Object.keys(data);
+const langs=document.getElementById("langs");
+
+function renderLanguages(){
+  langs.innerHTML="";
+  names.forEach(n=>{
+    const card=document.createElement("div");
+    card.className="lang-card reveal";
+    card.dataset.name=n.toLowerCase();
+    card.innerHTML=`<div class="lang-icon">${icons[n]}</div><h3>${n}</h3><p>${info[n]}</p>`;
+    card.onclick=()=>course(n);
+    langs.appendChild(card);
+  });
+  observe();
+}
+function showAllLanguages(){renderLanguages()}
+function course(n){
+  const topics=document.getElementById("topics");
+  document.getElementById("course").style.display="block";
+  document.getElementById("courseTitle").textContent=n+" Programming";
+  document.getElementById("courseDesc").textContent=info[n]||"Programming examples";
+  topics.innerHTML="";
+  Object.keys(data[n]).forEach(t=>{
+    const b=document.createElement("button");
+    b.className="topic";b.textContent=t;b.onclick=()=>showCode(n,t);
+    topics.appendChild(b);
+  });
+  showCode(n,Object.keys(data[n])[0]);
+  document.getElementById("course").scrollIntoView({behavior:"smooth"});
+}
+function showCode(n,t){
+  document.getElementById("courseCode").textContent=formatCode(data[n][t]);
+}
+function formatCode(s){return s.replace(/\r\n/g,"\n").trim()+"\n"}
+async function copy(id){
+  try{
+    await navigator.clipboard.writeText(document.getElementById(id).textContent);
+    alert("Code copied!");
+  }catch(e){alert("Copy unavailable in this browser.")}
+}
+
+function saveNote(){
+  const t=nt.value.trim(),x=nx.value.trim();
+  if(!t||!x)return alert("Enter title and note.");
+  const a=JSON.parse(localStorage.codemateNotes||"[]");
+  a.unshift({t,x,d:new Date().toLocaleString()});
+  localStorage.codemateNotes=JSON.stringify(a);
+  clearNote();renderNotes();alert("Note saved!");
+}
+function clearNote(){nt.value="";nx.value=""}
+function renderNotes(){
+  const a=JSON.parse(localStorage.codemateNotes||"[]");
+  noteList.innerHTML=a.length?a.map((n,i)=>`
+    <div class="note"><b>${esc(n.t)}</b>
+    <small>${esc(n.x.slice(0,120))}</small><small>${esc(n.d)}</small>
+    <br><button class="outline" onclick="delNote(${i})">Delete</button></div>`
+  ).join(""):'<div class="note"><small>No saved notes yet.</small></div>';
+}
+function delNote(i){
+  const a=JSON.parse(localStorage.codemateNotes||"[]");
+  a.splice(i,1);localStorage.codemateNotes=JSON.stringify(a);renderNotes();
+}
+function esc(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function solve(){
+  const c=sc.value,r=[];
+  if(!c.trim())return sr.textContent="Paste code first.";
+  if((c.match(/{/g)||[]).length!==(c.match(/}/g)||[]).length)r.push("Check curly braces: they do not match.");
+  if((c.match(/\(/g)||[]).length!==(c.match(/\)/g)||[]).length)r.push("Check parentheses: they do not match.");
+  if(sl.value==="HTML"&&!c.toLowerCase().includes("<!doctype html>"))r.push("Consider adding <!DOCTYPE html>.");
+  if(sl.value==="Python"&&c.includes(";"))r.push("Python normally does not need semicolons.");
+  sr.textContent=r.length?r.map((x,i)=>i+1+". "+x).join("\n"):"No obvious basic issue detected. Test your code and read the compiler error carefully.";
+}
+function findLang(){
+  const q=search.value.toLowerCase();
+  document.querySelectorAll(".lang-card").forEach(c=>{
+    c.style.display=!q||c.dataset.name.includes(q)?"block":"none";
+  });
+}
+function modal(t){document.getElementById("modal").style.display="flex";show(t)}
+function closeM(){document.getElementById("modal").style.display="none"}
+function show(t){
+  const l=t==="login";
+  lf.style.display=l?"grid":"none";rf.style.display=l?"none":"grid";
+  lt.classList.toggle("active",l);rt.classList.toggle("active",!l);
+  mt.textContent=l?"Login":"Create Account";
+}
+function register(e){
+  e.preventDefault();
+  localStorage.codemateAccount=JSON.stringify({u:ru.value,e:re.value,p:rx.value});
+  alert("Demo account created!");show("login");
+}
+function login(e){
+  e.preventDefault();
+  const a=JSON.parse(localStorage.codemateAccount||"null");
+  if(a&&a.e===le.value&&a.p===lp.value){alert("Login successful!");closeM()}
+  else alert("Register a demo account first or check your details.");
+}
+
+let observer;
+function observe(){
+  if(!("IntersectionObserver" in window)){
+    document.querySelectorAll(".reveal").forEach(x=>x.classList.add("show"));return;
+  }
+  observer ||= new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+  },{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+}
+renderLanguages();renderNotes();observe();
+</script>
+</body>
+</html>
