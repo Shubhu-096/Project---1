@@ -34,317 +34,95 @@ button, input, select, textarea { font: inherit; outline: none; }
 button { cursor: pointer; }
 
 /* Top Navigation */
-.nav-wrapper {
-  max-width: 1320px;
-  margin: 18px auto;
-  padding: 0 20px;
-}
+.nav-wrapper { max-width: 1320px; margin: 18px auto; padding: 0 20px; }
 .nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 28px;
-  background: rgba(12, 17, 29, 0.7);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 28px; background: rgba(12, 17, 29, 0.7);
+  backdrop-filter: blur(14px); border: 1px solid var(--border-subtle);
   border-radius: 40px;
 }
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 20px;
-  font-weight: 800;
-  color: #fff;
-  text-decoration: none;
-}
-.logo-tag {
-  color: var(--accent-yellow);
-  background: rgba(250, 204, 21, 0.12);
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 15px;
-}
-.logo span { color: #fff; }
+.logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; color: #fff; text-decoration: none; }
+.logo-tag { color: var(--accent-yellow); background: rgba(250, 204, 21, 0.12); padding: 4px 8px; border-radius: 8px; font-size: 15px; }
 .logo span b { color: var(--accent-green); }
 
 .links { display: flex; gap: 28px; align-items: center; }
-.links a {
-  color: var(--text-dim);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color .2s;
-  position: relative;
-  padding: 6px 0;
-}
+.links a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; position: relative; padding: 6px 0; }
 .links a:hover, .links a.active { color: #fff; }
-.links a.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--accent-yellow);
-  border-radius: 2px;
-}
+.links a.active::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent-yellow); border-radius: 2px; }
 
 .nav-actions { display: flex; align-items: center; gap: 12px; }
-.search-bar {
-  display: flex;
-  align-items: center;
-  background: rgba(17, 24, 39, 0.8);
-  border: 1px solid var(--border-subtle);
-  border-radius: 30px;
-  padding: 6px 14px;
-  gap: 8px;
-}
-.search-bar input {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 13px;
-  width: 110px;
-}
-.btn-started {
-  background: transparent;
-  border: 1px solid rgba(250, 204, 21, 0.6);
-  color: var(--accent-yellow);
-  padding: 8px 18px;
-  border-radius: 24px;
-  font-weight: 600;
-  font-size: 13px;
-  transition: .2s ease;
-}
-.btn-started:hover {
-  background: var(--accent-yellow);
-  color: #000;
-}
+.search-bar { display: flex; align-items: center; background: rgba(17, 24, 39, 0.8); border: 1px solid var(--border-subtle); border-radius: 30px; padding: 6px 14px; gap: 8px; }
+.search-bar input { background: transparent; border: none; color: #fff; font-size: 13px; width: 110px; }
+.btn-started { background: transparent; border: 1px solid rgba(250, 204, 21, 0.6); color: var(--accent-yellow); padding: 8px 18px; border-radius: 24px; font-weight: 600; font-size: 13px; transition: .2s ease; }
+.btn-started:hover { background: var(--accent-yellow); color: #000; }
 
-/* Page Container */
-.container {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+.container { max-width: 1320px; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; gap: 24px; }
 
-/* Hero Section */
+/* Hero */
 .hero-box {
   background: linear-gradient(180deg, rgba(14, 21, 37, 0.85) 0%, rgba(9, 13, 24, 0.85) 100%);
-  border: 1px solid var(--border-subtle);
-  border-radius: 24px;
-  padding: 50px 60px;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 40px;
-  position: relative;
-  overflow: hidden;
+  border: 1px solid var(--border-subtle); border-radius: 24px; padding: 50px 60px;
+  display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px;
 }
-.badge-hero {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #e2e8f0;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-.hero-title {
-  font-size: 52px;
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -1px;
-  margin-bottom: 18px;
-}
+.badge-hero { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #e2e8f0; font-size: 12px; font-weight: 600; margin-bottom: 20px; }
+.hero-title { font-size: 52px; font-weight: 800; line-height: 1.15; letter-spacing: -1px; margin-bottom: 18px; }
 .hero-title .t-blue { color: #38bdf8; }
 .hero-title .t-cyan { color: #2dd4bf; }
 .hero-title .t-yellow { color: var(--accent-yellow); }
-.hero-desc {
-  color: var(--text-dim);
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 480px;
-  margin-bottom: 30px;
-}
-.btn-primary {
-  background: var(--accent-yellow);
-  color: #080c16;
-  border: 0;
-  padding: 13px 26px;
-  border-radius: 24px;
-  font-weight: 700;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: transform .2s ease;
-}
+.hero-desc { color: var(--text-dim); font-size: 16px; line-height: 1.6; max-width: 480px; margin-bottom: 30px; }
+.btn-primary { background: var(--accent-yellow); color: #080c16; border: 0; padding: 13px 26px; border-radius: 24px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: transform .2s ease; }
 .btn-primary:hover { transform: translateY(-2px); }
 
-/* Hero Graphic Illustration */
-.hero-visual {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.mockup-laptop {
-  width: 100%;
-  max-width: 440px;
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 14px;
-  padding: 14px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  position: relative;
-  z-index: 2;
-}
-.mockup-top {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 12px;
-}
+/* Laptop Illustration */
+.hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+.mockup-laptop { width: 100%; max-width: 440px; background: #0f172a; border: 1px solid #334155; border-radius: 14px; padding: 14px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); position: relative; z-index: 2; }
+.mockup-top { display: flex; gap: 6px; margin-bottom: 12px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; }
-.dot.red { background: #ef4444; }
-.dot.yellow { background: #eab308; }
-.dot.green { background: #22c55e; }
-.mockup-code {
-  font-family: monospace;
-  font-size: 12px;
-  line-height: 1.7;
-  color: #94a3b8;
-}
-.mockup-code span.c1 { color: #f43f5e; }
-.mockup-code span.c2 { color: #38bdf8; }
-.mockup-code span.c3 { color: #a855f7; }
-.mockup-code span.c4 { color: #22c55e; }
-
-.float-badge {
-  position: absolute;
-  border-radius: 14px;
-  width: 52px;
-  height: 52px;
-  display: grid;
-  place-items: center;
-  font-size: 22px;
-  z-index: 3;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
+.dot.red { background: #ef4444; } .dot.yellow { background: #eab308; } .dot.green { background: #22c55e; }
+.mockup-code { font-family: monospace; font-size: 12px; line-height: 1.7; color: #94a3b8; }
+.float-badge { position: absolute; border-radius: 14px; width: 52px; height: 52px; display: grid; place-items: center; font-size: 22px; z-index: 3; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
 .badge-1 { top: -10px; left: -10px; background: #eab308; color: #000; font-weight: 800; }
 .badge-2 { bottom: 0px; left: 10px; background: #10b981; color: #fff; }
 .badge-3 { top: -8px; right: 0px; background: #3b82f6; color: #fff; }
 
-/* Dashboard Bento Box */
-.section-panel {
-  background: rgba(12, 17, 29, 0.75);
-  border: 1px solid var(--border-subtle);
-  border-radius: 24px;
-  padding: 30px;
-}
-.panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 22px;
-}
-.header-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.title-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  background: #1e293b;
-  font-size: 18px;
-}
+/* Panels */
+.section-panel { background: rgba(12, 17, 29, 0.75); border: 1px solid var(--border-subtle); border-radius: 24px; padding: 30px; }
+.panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.header-title-wrap { display: flex; align-items: center; gap: 12px; }
+.title-icon { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: #1e293b; font-size: 18px; }
 .panel-title h3 { font-size: 18px; font-weight: 700; }
 .panel-title p { color: var(--text-dim); font-size: 13px; margin-top: 2px; }
-.btn-view-all {
-  background: transparent;
-  border: 1px solid var(--border-bright);
-  color: var(--text-dim);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-}
+.btn-view-all { background: transparent; border: 1px solid var(--border-bright); color: var(--text-dim); padding: 6px 14px; border-radius: 20px; font-size: 12px; transition: all .2s; }
+.btn-view-all:hover { border-color: var(--accent-cyan); color: #fff; }
 
-/* Languages Grid */
-.langs-grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 12px;
-}
+/* Language Grid */
+.langs-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
 .lang-item {
-  background: rgba(17, 24, 39, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: 14px;
-  padding: 18px 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: all .25s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  background: rgba(17, 24, 39, 0.6); border: 1px solid var(--border-subtle); border-radius: 14px;
+  padding: 18px 8px; text-align: center; cursor: pointer; transition: all .25s ease;
+  display: flex; flex-direction: column; align-items: center; gap: 8px; user-select: none;
 }
-.lang-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(56, 189, 248, 0.5);
-  background: rgba(17, 24, 39, 0.9);
-}
-.lang-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  font-size: 20px;
-  font-weight: 800;
-  background: #111827;
-}
+.lang-item:hover { transform: translateY(-4px); border-color: rgba(56, 189, 248, 0.5); background: rgba(17, 24, 39, 0.9); }
+.lang-item.active-lang { border-color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1); box-shadow: 0 0 16px rgba(56, 189, 248, 0.2); }
+.lang-icon { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-size: 20px; font-weight: 800; background: #111827; }
 .lang-item h4 { font-size: 13px; font-weight: 600; color: #fff; }
 .lang-item span { font-size: 10px; color: var(--text-dim); line-height: 1.2; }
 
-/* Dual Bento Cards */
-.split-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-.feature-card {
-  border-radius: 22px;
-  padding: 28px;
-  background: rgba(12, 17, 29, 0.75);
-  border: 1px solid var(--border-subtle);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative;
-  overflow: hidden;
-}
+/* Interactive Code Playground */
+.course-container { display: none; border-color: rgba(56, 189, 248, 0.3); animation: slideDown .3s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.code-box { background: #090d16; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 16px; margin: 14px 0; font-family: monospace; font-size: 13px; color: #e2e8f0; overflow-x: auto; white-space: pre-wrap; }
+.topic-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.topic-pills button { background: #111827; color: #94a3b8; border: 1px solid var(--border-subtle); border-radius: 20px; padding: 6px 14px; font-size: 12px; transition: .2s; }
+.topic-pills button.active, .topic-pills button:hover { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: #38bdf8; }
+
+/* Features Split */
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.feature-card { border-radius: 22px; padding: 28px; background: rgba(12, 17, 29, 0.75); border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: flex-start; }
 .card-notes { border-color: rgba(168, 85, 247, 0.25); }
 .card-solver { border-color: rgba(34, 197, 94, 0.25); }
 .feature-info { max-width: 65%; z-index: 2; }
-.feature-badge-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  font-size: 16px;
-  margin-bottom: 12px;
-}
+.feature-badge-icon { width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; font-size: 16px; margin-bottom: 12px; }
 .card-notes .feature-badge-icon { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
 .card-solver .feature-badge-icon { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
 .feature-info h3 { font-size: 18px; margin-bottom: 4px; }
@@ -353,86 +131,16 @@ button { cursor: pointer; }
 .feature-list li { font-size: 12px; color: #cbd5e1; display: flex; align-items: center; gap: 6px; }
 .card-notes .feature-list li::before { content: "✓"; color: #c084fc; font-weight: bold; }
 .card-solver .feature-list li::before { content: "✓"; color: #4ade80; font-weight: bold; }
-
-.btn-feature {
-  border: none;
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
+.btn-feature { border: none; padding: 8px 18px; border-radius: 20px; font-size: 12px; font-weight: 600; }
 .card-notes .btn-feature { background: #9333ea; color: #fff; }
 .card-solver .btn-feature { background: #22c55e; color: #022c10; }
+.feature-art { width: 110px; height: 110px; border-radius: 18px; display: grid; place-items: center; font-size: 46px; background: #111827; border: 1px solid var(--border-subtle); }
 
-.feature-art {
-  width: 110px;
-  height: 110px;
-  border-radius: 18px;
-  display: grid;
-  place-items: center;
-  font-size: 46px;
-  background: #111827;
-  border: 1px solid var(--border-subtle);
-}
+/* Inputs */
+input, textarea, select { background: #111827; border: 1px solid var(--border-bright); color: #fff; border-radius: 10px; padding: 10px; width: 100%; }
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); z-index: 100; place-items: center; }
+.modal-content { background: #0e1626; border: 1px solid var(--border-bright); border-radius: 20px; width: min(420px, 90%); padding: 28px; }
 
-/* Practice & Course Details Module */
-.code-box {
-  background: #090d16;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 16px;
-  margin: 14px 0;
-  font-family: monospace;
-  font-size: 13px;
-  color: #e2e8f0;
-  overflow-x: auto;
-  white-space: pre-wrap;
-}
-.topic-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-.topic-pills button {
-  background: #111827;
-  color: #94a3b8;
-  border: 1px solid var(--border-subtle);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-}
-.topic-pills button.active, .topic-pills button:hover {
-  background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-  border-color: #38bdf8;
-}
-
-/* Interactive Modals and Inputs */
-input, textarea, select {
-  background: #111827;
-  border: 1px solid var(--border-bright);
-  color: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  width: 100%;
-}
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(8px);
-  z-index: 100;
-  place-items: center;
-}
-.modal-content {
-  background: #0e1626;
-  border: 1px solid var(--border-bright);
-  border-radius: 20px;
-  width: min(420px, 90%);
-  padding: 28px;
-}
-
-/* Responsive */
 @media(max-width: 1024px) {
   .hero-box { grid-template-columns: 1fr; text-align: center; padding: 40px 24px; }
   .hero-desc { margin: 0 auto 24px; }
@@ -459,14 +167,13 @@ input, textarea, select {
       <a href="#languages">Learn</a>
       <a href="#solver">Practice</a>
       <a href="#notes">Notes</a>
-      <a href="#tips">About</a>
     </div>
     <div class="nav-actions">
       <div class="search-bar">
         <span>🔍</span>
-        <input id="search" placeholder="Search..." oninput="findLang()">
+        <input id="search" placeholder="Search language..." oninput="filterLangs()">
       </div>
-      <button class="btn-started" onclick="modal('login')">Get Started</button>
+      <button class="btn-started" onclick="modal()">Get Started</button>
     </div>
   </nav>
 </div>
@@ -498,11 +205,11 @@ input, textarea, select {
           <span class="dot green"></span>
         </div>
         <div class="mockup-code">
-          <span class="c1">function</span> <span class="c2">initCodeMate</span>() {<br>
-          &nbsp;&nbsp;<span class="c3">const</span> skills = [<span class="c4">"Learn"</span>, <span class="c4">"Build"</span>];<br>
-          &nbsp;&nbsp;<span class="c1">return</span> skills.<span class="c2">map</span>(s => s + <span class="c4">" 🚀"</span>);<br>
+          <span style="color:#f43f5e">function</span> <span style="color:#38bdf8">initCodeMate</span>() {<br>
+          &nbsp;&nbsp;<span style="color:#a855f7">const</span> skills = [<span style="color:#22c55e">"Learn"</span>, <span style="color:#22c55e">"Build"</span>];<br>
+          &nbsp;&nbsp;<span style="color:#f43f5e">return</span> skills.<span style="color:#38bdf8">map</span>(s => s + <span style="color:#22c55e">" 🚀"</span>);<br>
           }<br>
-          <span class="c2">console</span>.log(initCodeMate());
+          <span style="color:#38bdf8">console</span>.log(initCodeMate());
         </div>
       </div>
     </div>
@@ -518,27 +225,29 @@ input, textarea, select {
           <p>Choose your language and start coding today.</p>
         </div>
       </div>
-      <button class="btn-view-all">View All →</button>
+      <button class="btn-view-all" id="viewAllBtn" onclick="toggleViewAll()">View All (12) →</button>
     </div>
     <div class="langs-grid" id="langs"></div>
   </section>
 
-  <!-- Course Interactive Playground (Expands on Click) -->
-  <section class="section-panel" id="course" style="display:none;">
+  <!-- Interactive Language Playground (Revealed on click) -->
+  <section class="section-panel course-container" id="course">
     <div class="panel-header">
       <div class="panel-title">
-        <h3 id="courseTitle">Programming</h3>
-        <p id="courseDesc"></p>
+        <h3 id="courseTitle">Language Playground</h3>
+        <p id="courseDesc">Select a subtopic below to run code examples.</p>
       </div>
-      <button class="btn-view-all" onclick="copy('courseCode')">📋 Copy Snippet</button>
+      <div style="display:flex;gap:8px;">
+        <button class="btn-view-all" onclick="copySnippet()">📋 Copy Code</button>
+        <button class="btn-view-all" style="border-color:#ef4444;color:#ef4444;" onclick="closePlayground()">✕ Close</button>
+      </div>
     </div>
     <div class="topic-pills" id="topics"></div>
     <div class="code-box"><pre id="courseCode"></pre></div>
   </section>
 
-  <!-- Features Split -->
+  <!-- Split Bento Cards -->
   <div class="split-grid">
-    <!-- Notes Feature -->
     <div class="feature-card card-notes" id="notes">
       <div class="feature-info">
         <div class="feature-badge-icon">📄</div>
@@ -554,7 +263,6 @@ input, textarea, select {
       <div class="feature-art">📝</div>
     </div>
 
-    <!-- Solver Feature -->
     <div class="feature-card card-solver" id="solver">
       <div class="feature-info">
         <div class="feature-badge-icon">&lt;/&gt;</div>
@@ -571,11 +279,11 @@ input, textarea, select {
     </div>
   </div>
 
-  <!-- Functional Workspace Area -->
+  <!-- Functional Workspaces -->
   <div class="split-grid" style="margin-top: 10px;">
     <div class="section-panel" id="workspace-notes">
       <h3>📝 Quick Notes Editor</h3>
-      <p style="color:var(--text-dim);font-size:13px;margin-bottom:12px;">Local browser storage</p>
+      <p style="color:var(--text-dim);font-size:13px;margin-bottom:12px;">Saved locally in your browser session</p>
       <input id="nt" placeholder="Note Title" style="margin-bottom:10px;">
       <textarea id="nx" placeholder="Write code notes..." style="height:100px;margin-bottom:10px;"></textarea>
       <div style="display:flex;gap:10px;">
@@ -606,82 +314,77 @@ input, textarea, select {
 <div class="modal" id="modal">
   <div class="modal-content">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
-      <h3 id="mt">Get Started</h3>
+      <h3>Get Started</h3>
       <button onclick="closeM()" style="background:transparent;border:none;color:#fff;font-size:18px;">✕</button>
     </div>
-    <form id="lf" onsubmit="login(event)" style="display:grid;gap:12px;">
-      <input id="le" type="email" placeholder="Email Address" required>
-      <input id="lp" type="password" placeholder="Password" required>
+    <form onsubmit="event.preventDefault(); alert('Session started!'); closeM();" style="display:grid;gap:12px;">
+      <input type="email" placeholder="Email Address" required>
+      <input type="password" placeholder="Password" required>
       <button class="btn-primary" style="justify-content:center;">Sign In</button>
     </form>
   </div>
 </div>
 
 <script>
-const data = {
+// Data registry with topics and full descriptions
+const langData = {
   Python: {
-    "Variables": `name = "CodeMate"\nage = 18\nprint(name, age)`,
-    "Lists": `nums = [1, 2, 3, 4]\nprint(sum(nums))`,
-    "Functions": `def greet(name):\n    return f"Hello, {name}!"\nprint(greet("World"))`
+    tag: 'Simple & Powerful', icon: '🐍',
+    topics: {
+      "Variables": "name = 'CodeMate'\nage = 18\nprint(name, age)",
+      "Loops": "for i in range(1, 6):\n    print('Step:', i)",
+      "Functions": "def add(a, b):\n    return a + b\n\nprint('Total:', add(5, 7))"
+    }
   },
   JavaScript: {
-    "Variables": `let name = "CodeMate";\nconst version = 1;\nconsole.log(name, version);`,
-    "Arrow Func": `const square = x => x * x;\nconsole.log(square(5));`,
-    "Array Map": `console.log([1, 2, 3].map(x => x * 2));`
+    tag: 'Web & Beyond', icon: '⚡',
+    topics: {
+      "Variables": "const platform = 'CodeMate';\nlet learners = 1000;\nconsole.log(`${platform} has ${learners}+ learners`);",
+      "Arrow Function": "const square = (x) => x * x;\nconsole.log(square(8));",
+      "Array Map": "const nums = [1, 2, 3];\nconsole.log(nums.map(n => n * 2));"
+    }
   },
   Java: {
-    "Hello World": `class Main {\n  public static void main(String[] args) {\n    System.out.println("Hello, World!");\n  }\n}`
+    tag: 'Enterprise Apps', icon: '☕',
+    topics: {
+      "Hello World": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, CodeMate!\");\n    }\n}",
+      "Variables": "int age = 20;\nString course = \"Computer Science\";\nSystem.out.println(course + \": \" + age);"
+    }
   },
   "C++": {
-    "Hello World": `#include <iostream>\nusing namespace std;\nint main() {\n    cout << "Hello, World!";\n    return 0;\n}`
+    tag: 'High Performance', icon: '🔷',
+    topics: {
+      "Hello World": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Fast and efficient CodeMate!\" << endl;\n    return 0;\n}",
+      "Pointers": "int val = 42;\nint* ptr = &val;\ncout << \"Value: \" << *ptr << endl;"
+    }
   },
   C: {
-    "Hello World": `#include <stdio.h>\nint main() {\n    printf("Hello, World!\\n");\n    return 0;\n}`
+    tag: 'The Classic', icon: '🔹',
+    topics: {
+      "Hello World": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello, Classic C!\\n\");\n    return 0;\n}",
+      "For Loop": "for (int i = 0; i < 5; i++) {\n    printf(\"%d \", i);\n}"
+    }
   },
   PHP: {
-    "Hello World": `<?php\necho "Hello, World!";\n?>`
+    tag: 'Web Backend', icon: '🐘',
+    topics: {
+      "Basic Script": "<?php\n$framework = 'CodeMate';\necho \"Welcome to \" . $framework;\n?>",
+      "Array": "<?php\n$colors = array('Red', 'Green', 'Blue');\nprint_r($colors);\n?>"
+    }
   },
   Go: {
-    "Hello World": `package main\nimport "fmt"\nfunc main() {\n    fmt.Println("Hello, World!")\n}`
+    tag: 'Fast & Efficient', icon: '🐹',
+    topics: {
+      "Hello World": "package main\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello from Go!\")\n}"
+    }
   },
   Ruby: {
-    "Hello World": `puts "Hello, World!"`
-  }
-};
-
-const subtexts = {
-  Python: 'Simple & Powerful',
-  JavaScript: 'Web & Beyond',
-  Java: 'Enterprise Apps',
-  'C++': 'High Performance',
-  C: 'The Classic',
-  PHP: 'Web Development',
-  Go: 'Fast & Efficient',
-  Ruby: 'Elegant & Productive'
-};
-
-const icons = {
-  Python: '🐍', JavaScript: '🟨', Java: '☕', 'C++': '🔷',
-  C: '🔹', PHP: '🐘', Go: '🐹', Ruby: '💎'
-};
-
-// Render Language Grid
-const langContainer = document.getElementById('langs');
-Object.keys(data).forEach(lang => {
-  langContainer.innerHTML += `
-    <div class="lang-item" onclick="course('${lang}')">
-      <div class="lang-icon">${icons[lang] || '💻'}</div>
-      <h4>${lang}</h4>
-      <span>${subtexts[lang] || 'Learn Core'}</span>
-    </div>
-  `;
-});
-
-function course(lang) {
-  const topics = Object.keys(data[lang]);
-  const topicWrap = document.getElementById('topics');
-  document.getElementById('course').style.display = 'block';
-  document.getElementById('courseTitle').textContent = lang + ' Fundamentals';
-  document.getElementById('courseDesc').textContent = subtexts[lang] || '';
-  topicWrap.innerHTML = '';
-  topics.forEach((t, i
+    tag: 'Elegant & Productive', icon: '💎',
+    topics: {
+      "Basics": "3.times do |i|\n  puts \"Coding round #{i + 1}\"\nend"
+    }
+  },
+  HTML: {
+    tag: 'Structure Web', icon: '🌐',
+    topics: {
+      "Skeleton":
